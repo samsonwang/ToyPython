@@ -76,10 +76,56 @@ for x in range(101):
 print(sum)
 #+END_SRC
 
+* 函数
+** 使用函数进行数据类型转换
+#+BEGIN_SRC python
+#将字符串转换为整数
+int('123')
+#将字符串转换为浮点数
+float('12.34')
+#将浮点数转化为字符串
+str(1.23)
+#+END_SRC
+** 定义函数的语法
+函数定义示例
+#+BEGIN_SRC python
+def my_abs(x):
+	if x >= 0:
+		return x
+	else:
+		return -x
+#+END_SRC
 
+~pass~ 关键字
+使用 ~pass~ 关键字定义什么也不做的空函数
+#+BEGIN_SRC python
+def nop():
+	pass
+#+END_SRC
 
- 
+使用 ~pass~ 关键字跳过条件分支
+#+BEGIN_SRC python
+if age > 18:
+	pass
+#+END_SRC
 
+* 函数式编程
+
+** 匿名函数
+使用 ~lambda~ 关键字声明匿名函数
+~lambda x: x * x~ 实际上定义了形如
+#+BEGIN_SRC python
+def f(x):
+	return x * x
+#+END_SRC
+
+** 装饰器
+
+** 偏函数
+
+* 模块
+
+* 面向对象编程
 
 
 
