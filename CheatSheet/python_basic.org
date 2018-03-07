@@ -126,6 +126,35 @@ def f(x):
 * 模块
 
 * 面向对象编程
+声明一个类的示例代码如下。
+这段代码表示Student继承于object，具有__name和__score两个成员变量，具有name静态成员变量。
+通常如果沒有合适的集成类，就使用object类，这是所有类最终都会继承的类。
+以双下划线开头的成员变量是私有变量，外部代码不能随意修改。
+#+BEGIN_SRC python
+class Student(object):
+	name='Student'
+	def __init__(self, name, score):
+		self.__name = name
+    self.__score = score
+	def print_score(self):
+		print('%s: %s' % (self.__name, self.__score))
+#+END_SRC
+
+** 继承和多态
+Python作为动态语言，其对于对象类型的检查并不严格。
+#+BEGIN_QUOTE
+动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。
+#+END_QUOTE
+
+** 获取对象信息
+使用 ~type()~ 函数进行对象类型判断。
+使用 ~isinstance~ 函数判断某个对象的类型。
+使用 ~dir()~ 函数获取一个对象所有属性。
+
+
+* 面向对象高级编程
+python的调试工具pdb
+
 
 
 
