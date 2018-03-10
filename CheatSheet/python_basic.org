@@ -164,7 +164,43 @@ Python作为动态语言，其对于对象类型的检查并不严格。
 
 
 * 面向对象高级编程
+
+* 错误、调试和测试
 python的调试工具pdb
+
+** 错误处理
+使用 ~try...except...finally~ 
+示例代码
+#+BEGIN_SRC python
+try:
+	print('try...')
+	r = 10 / 0
+	print('result:', r)
+except ZeroDivisionError as e:
+	print('except:', e)
+else:
+	print('no error')
+finally:
+	print('finally...')
+print('END')
+#+END_SRC
+
+当出现异常情况时会中断 ~try~ 代码段的执行，跳转到 ~except~ 代码段，在没有出现异常时会跳转执行 ~else~ 代码段， ~finally~ 代码段的代码是一直都会执行的。
+
+使用 ~try...except~ 进行异常捕获可以跨多层函数调用。
+
+** 调用栈
+如果错误没有被捕获，它就会一直往上抛，最后被python解释器捕获，打印出错误信息。
+注意：在错误信息，靠上的栈更深，更早被调用，靠下的栈更浅，更晚被调用，更接近出异常的代码。
+
+** 记录错误
+python内置的 ~logging~ 模块可以非常容易地记录错误信息，通过配置还可以将错误信息输出到日志文件中。
+
+
+** 抛出异常
+异常也是class，可以自定义异常类。
+只有在必要的时候才定义我们自己的异常类型，如果可以选择python中已有的内置错误类型（比如 ~ValueError~ , ~TypeError~ ），尽量使用python内置的错误类型。
+
 
 
 
