@@ -207,7 +207,44 @@ python内置的 ~logging~ 模块可以非常容易地记录错误信息，通过
 只有在必要的时候才定义我们自己的异常类型，如果可以选择python中已有的内置错误类型（比如 ~ValueError~ , ~TypeError~ ），尽量使用python内置的错误类型。
 
 
+* IO编程
+** 文件读写
+示例代码
+#+BEGIN_SRC python
+try:
+	f = open('/path/to/file', 'r')
+	print(f.read())
+finally:
+	if f:
+		f.close()
+#+END_SRC
 
+文件读写可能会产生 ~IOError~ , 出错后文件关闭 ~f.close()~ 就不会调用，所以 为了保证无论是否出错都能正常关闭。
+使用 ~with~ 语句自动调用 ~close~ 方法，示例代码如下。
+#+BEGIN_SRC python
+with open('/path/to/file', 'r') as f:
+	for line in f.readlines()
+		print(line.strip())
+#+END_SRC
+** 字符编码
+python读取文本文件时默认采用 ~utf-8~ 格式，可以通过 ~encoding~ 参数设置读取文件的编码格式。
+
+** 
+
+
+* virtualenv
+
+在开发python应用程序的时候，所有第三方包都会被 ~pip~ 安装到 ~site-packages~ 目录下，如果我们需要同时开发多个应用程序，那这些应用程序都会共用同一套 ~site-packages~ , 如果每个程序需要的同一个第三方包的版本不同，就会出现冲突。
+
+这样可以为每个应用程序配置一套独立的python运行环境， ~virtualenv~ 就是用来为一个应用创建一套“隔离”的运行环境。
+
+* 图形编程
+python自带的图形库是支持Tk的Tkinter，使用Tkinter，无须安装任务包，就可以直接使用。
+Tkinter可以满足基本的GUI程序的要求，如果是非常复杂的GUI程序，建议用操作系统远程支持的语言和库来写。
+
+* 网络编程
+
+IP地址实际上是一个32位整数（称为IPv4）
 
 
 
