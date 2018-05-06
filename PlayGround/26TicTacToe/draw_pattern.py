@@ -32,7 +32,7 @@ def tic_tac_toe_game():
     
 def main():
     logger = logging.getLogger("root")
-    FORMAT = "[ %(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
+    FORMAT = "%(filename)s:%(lineno)s %(funcName)s() %(message)s"
     logging.basicConfig(format=FORMAT)
     logger.setLevel(logging.DEBUG)
     tic_tac_toe_game()
