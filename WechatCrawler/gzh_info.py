@@ -1,14 +1,11 @@
 #!/usr/bin/python3
 
-try:
-    import wechatsogou
-except ImportError as err:
-    print("fail to import wechatsogou", err)
-    print("please install wechatsogou")
-    quit()
+import os, sys
+#import csv
+import wechatsogou
+import xlwt
+from xlwt import Workbook
 
-import os
-import csv
 from conf import *
 
 def main():
@@ -24,19 +21,18 @@ def main():
     if (not os.path.isdir(dir_name)):
         os.mkdir(dir_name)
 
-    csvfile_col = list(gzh_info[0].keys())
-    csvfile_name = os.path.join (dir_name, "gzh_info.csv")
-
-    print("正在写入文件:", csvfile_name)
-    with open(csvfile_name, 'w') as csvfile:
-        writer = csv.DictWriter(csvfile,
-                            fieldnames=csvfile_col)
-        writer.writeheader()
-        for info in gzh_info:
-            writer.writerow(info)
-
-    print("写入文件完成:", csvfile_name)
+    file_name = os.path.join (dir_name, "gzh_info.xls")
+    print("正在写入文件:", file_name)
+    wb = Workbook()
+    ws = wb.add_sheet('sheet1')
+    colums = list(gzh_info[0].keys())
+    for j, col in enumerate(colums):
+        ws.write(0, j, col)
+    for i, row in enumerate(gzh_info):
+        for j, col in enumerate(colums):
+            ws.write(i+1, j, row[col])
+    wb.save(file_name)
+    print("写入文件完成:", file_name)
 
 if __name__ == "__main__":
-    pass
     main()
