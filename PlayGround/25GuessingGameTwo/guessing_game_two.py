@@ -31,9 +31,7 @@ def main():
             num_upper_range = num_try
         else:
             num_lower_range = num_try
-    print("bingo! num is %d", num_try)
-    
+    print("bingo! num is %d" % num_try)
+
 if __name__ == '__main__':
     main()
-
-

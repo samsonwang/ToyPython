@@ -5,9 +5,7 @@ given a 3 by 3 list of lists that represents a Tic Tac Toe game board, tell me w
 
 import logging as log
 
-
 log.basicConfig(level=log.DEBUG)
-
 
 #暂时没有考虑数组越界的问题
 # accept matrix holds in list of list
@@ -78,16 +76,11 @@ def tic_tac_toe_judge(list_data):
 
 def main():
     list_game1 = [[1, 2, 1],
-                  [2, 2, 0],
-	          [1, 2, 1]]
+                  [2, 1, 0],
+	              [1, 2, 1]]
 
     num_ret = tic_tac_toe_judge(list_game1)
     print("winner is:" , num_ret)
 
 if __name__ == '__main__':
     main()
-
-
-
-
-

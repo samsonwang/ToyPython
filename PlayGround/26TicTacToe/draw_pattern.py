@@ -12,8 +12,6 @@ https://www.practicepython.org/exercise/2015/11/26/27-tic-tac-toe-draw.html
 
 import logging
 
-
-
 # get cordinate and return a tuple
 def get_player_input(str_player):
     log = logging.getLogger("root")
@@ -28,18 +26,16 @@ def tic_tac_toe_game():
     print("Welcome to tic tac toe")
     tup_p1 = get_player_input("Player 1")
     log.debug("Player 1: %s" % (tup_p1, ))
-    
-    
+
+
 def main():
     logger = logging.getLogger("root")
     FORMAT = "%(filename)s:%(lineno)s %(funcName)s() %(message)s"
     logging.basicConfig(format=FORMAT)
     logger.setLevel(logging.DEBUG)
     tic_tac_toe_game()
-    
+
 
 
 if __name__ == '__main__':
     main()
-
-
