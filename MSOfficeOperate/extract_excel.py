@@ -16,23 +16,27 @@ from write_to_file import *
 #dates_dict = defaultdict(list)
 g_data = dict()
 
-g_major = 'ISCS'
+g_major = 'FAS'
 
 def generate_case(oper, result):
+    oper = oper.replace('\n', '').replace('\r', '')
+    result = result.replace('\n', '').replace('\r', '')
     if oper.endswith('。'):
         oper = oper[0:-1]
     if oper[1] == '、':
         oper = oper[2:]
+    if result.endswith('；'):
+        result = result[0:-1]
     if result and not result.endswith('。'):
         result += '。'
 
     case = []
     if result:
-        case.append('打开中心终端；' + oper + '；' + result)
-        case.append('打开车站终端；' + oper + '；' + result)
+        case.append('打开仿真终端；' + oper + '；' + result)
+#        case.append('打开车站终端；' + oper + '；' + result)
     else:
-        case.append('打开中心终端；' + oper + '。')
-        case.append('打开车站终端；' + oper + '。')
+        case.append('打开仿真展终端；' + oper + '。')
+#        case.append('打开车站终端；' + oper + '。')
     return case
 
 def load_data():
@@ -55,10 +59,9 @@ def load_data():
                 g_data[row[4].value][row[5].value].append(case)
 
 def main():
-    g_major = 'ISCS'
     load_data()
     print(g_data)
-    write_data(g_major, g_data)
+    write_data('FAS-SIM', g_data)
 
 
 if __name__ == "__main__":
